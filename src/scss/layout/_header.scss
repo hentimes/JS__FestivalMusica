@@ -1,0 +1,55 @@
+
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+    //ENCABEZADO
+.header {
+    background-color: v.$verde; //Color de fondo del header
+    padding: 2rem;              //Crea un margen superior
+    h1 {
+        text-align: center;     //Centrar header
+        color: v.$blanco;       //Color de fuente
+        @include m.tablet {
+            margin: 0;              //elimina el margin inferior en el heading
+        }
+    }
+    .contenido-header {
+        @include m.tablet {     //aplicando mq al tamaño tablet
+            display: flex;      //activar flex
+            justify-content: space-between; // alinea los dos bloque en los extremos.
+            align-items: center;//centra los elemntos del header
+        }
+    }
+}
+
+    //BARRA DE MENU
+.navegacion-principal {
+    @include m.tablet {         //aplicando mq al tamaño tablet
+        display: flex;          //activar flex
+        gap: 2rem;              //Separacion de los links en el menu
+    }
+    a {
+        display:block;          //Orden de ariba hacia abajo
+        text-align: center;     //centrar el bloque
+        color: v.$blanco;       // color de fuente del bloque
+        font-size: 2.4rem;      //Tamaño de la funete
+        margin-bottom: 1rem;    //crea un margen inferior de 1rem en los elementos del menu
+        @include m.tablet {
+            margin: 0;
+        }
+        &:hover {               // el & elimina el espacio que se crea entre la a y el :hover al identarlo
+            color: v.$amarillo; //color al que cambia al hacer pasar el mouse "hover"
+        }
+    }
+}
+/**
+.prueba {
+    @include m.heading(v.$blanco, true);  
+    //Primero estamos indicando que este heading va de color negro.
+    //El true funciona como activador al segundo argumento del mixin. En este caso $border-radius
+}
+
+.texto {
+    @include m.heading;  //heading sin color toma el color default establecido en _mixins.scss
+}
+**/
